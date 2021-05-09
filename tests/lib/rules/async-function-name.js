@@ -1,37 +1,57 @@
 /**
- * @fileoverview async function should has &#39;Async&#39; words 
+ * @fileoverview async function should has &#39;Async&#39; words
  * @author chihyang41
  */
-"use strict";
+'use strict'
 
 //------------------------------------------------------------------------------
 // Requirements
 //------------------------------------------------------------------------------
 
-var rule = require("../../../lib/rules/async-function-name"),
-
-    RuleTester = require("../../../lib/testers/rule-tester");
-
+var rule = require('../../../lib/rules/async-function-name')
+var RuleTester = require('eslint').RuleTester
 
 //------------------------------------------------------------------------------
 // Tests
 //------------------------------------------------------------------------------
 
-var ruleTester = new RuleTester();
-ruleTester.run("async-function-name", rule, {
+var ruleTester = new RuleTester({ parserOptions: { ecmaVersion: 2018 } })
+ruleTester.run('async-function-name', rule, {
+  valid: [
+    'console.log()',
+    'function foo() { console.log() }',
+    {
+      code: 'async function fooAsync() { return "" }',
+    },
+  ],
 
-    valid: [
-
-        // give me some code that won't trigger a warning
-    ],
-
-    invalid: [
+  invalid: [
+    {
+      code: 'async function myFunction() { return "";}',
+      errors: [
         {
-            code: "",
-            errors: [{
-                message: "Fill me in.",
-                type: "Me too"
-            }]
-        }
-    ]
-});
+          message: 'async function name should have Async words',
+          type: 'FunctionDeclaration',
+        },
+      ],
+    },
+    {
+      code: 'async function myFunctionasync() { return "";}',
+      errors: [
+        {
+          message: 'async function name should have Async words',
+          type: 'FunctionDeclaration',
+        },
+      ],
+    },
+    {
+      code: 'async function myAsyncFunction() { return "";}',
+      errors: [
+        {
+          message: 'async function name should have Async words',
+          type: 'FunctionDeclaration',
+        },
+      ],
+    },
+  ],
+})
