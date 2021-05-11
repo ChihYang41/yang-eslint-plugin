@@ -34,6 +34,7 @@ ruleTester.run('async-function-name', rule, {
           type: 'FunctionDeclaration',
         },
       ],
+      output: 'async function myFunctionAsync() { return "";}',
     },
     {
       code: 'async function myFunctionasync() { return "";}',
@@ -43,6 +44,7 @@ ruleTester.run('async-function-name', rule, {
           type: 'FunctionDeclaration',
         },
       ],
+      output: 'async function myFunctionAsync() { return "";}',
     },
     {
       code: 'async function myAsyncFunction() { return "";}',
@@ -52,6 +54,7 @@ ruleTester.run('async-function-name', rule, {
           type: 'FunctionDeclaration',
         },
       ],
+      output: 'async function myFunctionAsync() { return "";}',
     },
   ],
 })
