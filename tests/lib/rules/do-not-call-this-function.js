@@ -33,7 +33,7 @@ ruleTester.run('do-not-call-this-function', rule, {
       options: [{ disallowedMethods: ['resetAll', 'printError'] }],
       errors: [
         {
-          message: 'dont call this function',
+          message: 'dontCallMsg',
           type: 'Identifier',
         },
       ],
@@ -44,7 +44,7 @@ ruleTester.run('do-not-call-this-function', rule, {
       options: [{ disallowedMethods: ['destroyApp', 'resetAll'] }],
       errors: [
         {
-          message: 'dont call this function',
+          message: 'dontCallMsg',
           type: 'Identifier',
         },
       ],
@@ -55,7 +55,7 @@ ruleTester.run('do-not-call-this-function', rule, {
       options: [{ disallowedMethods: ['printError'] }],
       errors: [
         {
-          message: 'dont call this function',
+          message: 'dontCallMsg',
           type: 'Identifier',
         },
       ],
