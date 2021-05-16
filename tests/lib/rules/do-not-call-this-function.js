@@ -37,6 +37,7 @@ ruleTester.run('do-not-call-this-function', rule, {
           type: 'Identifier',
         },
       ],
+      output: '',
     },
     {
       code: 'destroyApp()',
@@ -47,6 +48,7 @@ ruleTester.run('do-not-call-this-function', rule, {
           type: 'Identifier',
         },
       ],
+      output: '',
     },
     {
       code: 'printError()',
@@ -57,6 +59,7 @@ ruleTester.run('do-not-call-this-function', rule, {
           type: 'Identifier',
         },
       ],
+      output: '',
     },
   ],
 })
