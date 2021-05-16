@@ -17,11 +17,20 @@ var RuleTester = require('eslint').RuleTester
 
 var ruleTester = new RuleTester()
 ruleTester.run('do-not-call-this-function', rule, {
-  valid: ['foo()', 'console.log()', 'getData()'],
+  valid: [
+    'foo()',
+    'console.log()',
+    'getData()',
+    {
+      code: 'resetAll()',
+      options: [{ disallowedMethods: ['destroyApp', 'printError'] }],
+    },
+  ],
 
   invalid: [
     {
       code: 'resetAll()',
+      options: [{ disallowedMethods: ['resetAll', 'printError'] }],
       errors: [
         {
           message: 'dont call this function',
@@ -31,6 +40,7 @@ ruleTester.run('do-not-call-this-function', rule, {
     },
     {
       code: 'destroyApp()',
+      options: [{ disallowedMethods: ['destroyApp', 'resetAll'] }],
       errors: [
         {
           message: 'dont call this function',
@@ -40,6 +50,7 @@ ruleTester.run('do-not-call-this-function', rule, {
     },
     {
       code: 'printError()',
+      options: [{ disallowedMethods: ['printError'] }],
       errors: [
         {
           message: 'dont call this function',
