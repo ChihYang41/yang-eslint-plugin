@@ -19,9 +19,17 @@ var ruleTester = new RuleTester({ parserOptions: { ecmaVersion: 2018 } })
 ruleTester.run('async-function-name', rule, {
   valid: [
     'console.log()',
-    'function foo() { console.log() }',
+    `
+      function foo() { 
+        console.log() 
+      }
+    `,
     {
-      code: 'async function fooAsync() { return "" }',
+      code: `
+        async function fooAsync() { 
+          return "" 
+        }
+      `,
     },
   ],
 
@@ -31,7 +39,6 @@ ruleTester.run('async-function-name', rule, {
       errors: [
         {
           message: 'async function name should have Async words',
-          type: 'FunctionDeclaration',
         },
       ],
       output: 'async function myFunctionAsync() { return "";}',
@@ -41,7 +48,6 @@ ruleTester.run('async-function-name', rule, {
       errors: [
         {
           message: 'async function name should have Async words',
-          type: 'FunctionDeclaration',
         },
       ],
       output: 'async function myFunctionAsync() { return "";}',
@@ -51,7 +57,6 @@ ruleTester.run('async-function-name', rule, {
       errors: [
         {
           message: 'async function name should have Async words',
-          type: 'FunctionDeclaration',
         },
       ],
       output: 'async function myFunctionAsync() { return "";}',
