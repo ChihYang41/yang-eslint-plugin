@@ -34,7 +34,6 @@ ruleTester.run('do-not-call-this-function', rule, {
       errors: [
         {
           messageId: 'dontCallMsg',
-          type: 'Identifier',
         },
       ],
       output: '',
@@ -45,7 +44,6 @@ ruleTester.run('do-not-call-this-function', rule, {
       errors: [
         {
           messageId: 'dontCallMsg',
-          type: 'Identifier',
         },
       ],
       output: '',
@@ -56,7 +54,6 @@ ruleTester.run('do-not-call-this-function', rule, {
       errors: [
         {
           messageId: 'dontCallMsg',
-          type: 'Identifier',
         },
       ],
       output: '',
